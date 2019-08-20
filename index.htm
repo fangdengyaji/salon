@@ -136,6 +136,25 @@ a:active,a:hover{
     outline:0;
     text-decoration:none
 }
+.nav a:hover,
+.nav a:active {
+    color: #ffffff;
+    font-size: 40px;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fontsizebig {
+    from { font-size: 14px; }
+    to {font-size: 40px;}
+}
+
+/* Standard syntax */
+@keyframes fontsizebig {
+    from { font-size: 14px; }
+    to {font-size: 40px;}
+}
+.nav a:hover {
+    animation: fontsizebig 1s 1;
+}
 a[disabled]{
     color:rgba(0,0,0,.25);
     cursor:not-allowed;
@@ -6289,6 +6308,7 @@ footer .divider___2BDKl{
 }
 
     </style>
+    <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
   </head>
   <body>
       <div id="root">
@@ -6303,17 +6323,17 @@ footer .divider___2BDKl{
                 </a>
                 <nav class="nav___1PqHP">
                    <ul>
-                      <li>
-                         <a class="" href="#guests">特邀嘉宾</a>
+                      <li class="nav" data-id="guests">
+                         <a class="">特邀嘉宾</a>
                       </li>
-                      <li>
-                         <a class="" href="#schedule">会议日程</a>
+                      <li class="nav" data-id="schedule">
+                         <a class="">会议日程</a>
                       </li>
-                      <li>
-                         <a class="" href="#location">地点</a>
+                      <li class="nav" data-id="location">
+                         <a class="">地点</a>
                       </li>
-                      <li>
-                         <a class="" href="#partners">合作伙伴</a>
+                      <li class="nav" data-id="partners">
+                         <a class="">合作伙伴</a>
                       </li>
                    </ul>
                 </nav>
@@ -6459,4 +6479,11 @@ footer .divider___2BDKl{
           </footer>
        </div>
   </body>
+  <script>
+      $('.nav').click(function() {
+        var id = '#' + $(this).attr('data-id');
+        var scrollTop = $(id).offset().top;
+        $('html body').animate({'scrollTop': scrollTop + 'px'}, scrollTop/7, 'linear');
+      });
+  </script>
 </html>
